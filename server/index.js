@@ -30,9 +30,9 @@ app.get('/books',(req,res)=>{
 })
 
 app.post('/books',(req, res)=>{
-    const values = [req.body.title, req.body.descr, req.body.cover];
+    const values = [req.body.title, req.body.descr, req.body.cover, req.body.price];
 
-    db.query('insert into books (`title`, `descr`, `cover`) values(?,?,?)', values, (err, result)=>{
+    db.query('insert into books (`title`, `descr`, `cover`, `price`) values(?,?,?,?)', values, (err, result)=>{
         if(err){
             console.log(err);
             return res.json(err);
