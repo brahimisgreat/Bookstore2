@@ -1,6 +1,6 @@
 import { useState } from "react";
 import axios from "axios";
-import { useNavigate } from "react-router-dom";
+import { useLocation, useNavigate } from "react-router-dom";
 import './Update.css'
 
 export const Update = () => {
@@ -11,7 +11,11 @@ export const Update = () => {
     cover: "",
   });
 
+  const location = useLocation();
   const navigate = useNavigate();
+  const bookid = location.pathname.split("/")[2]
+
+  console.log(location.pathname.split("/")[2]);
 
   const handleChange = (e) => {
     setBooks({
@@ -23,7 +27,7 @@ export const Update = () => {
   const handleClick = async (e) => {
     e.preventDefault();
     try {
-      await axios.put("http://localhost:3000/books", books);
+      await axios.put("http://localhost:3000/books/"+ bookid, books);
       navigate("/");
     } catch (err) {
       console.log(err);

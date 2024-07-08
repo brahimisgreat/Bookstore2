@@ -43,10 +43,10 @@ app.delete('/books/:id', (req,res)=> {
 
 app.put('/books/:id', (req,res)=> {
     const bookid = req.params.id;
-    const q = 'update books set title = ?, descr =?, cover = ?, price =? where id = ?'
-    const values = [req.body.title, req.body.descr, req.body.cover, req.body.price, bookid]
+    const q = `update books set 'title' = ?, 'descr' =?, 'cover' = ?, 'price' =? where id = ?`
+    const values = [req.body.title, req.body.descr, req.body.cover, req.body.price,]
     
-    db.query(q,values, bookid, (err, result)=>{
+    db.query(q,[...values, bookid], (err, result)=>{
         if(err)
             console.log(err);
         return res.json("updated");

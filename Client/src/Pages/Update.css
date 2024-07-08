@@ -1,4 +1,19 @@
 .update{
     display: flex;
     flex-direction: column;
+    gap: 20px;
+}
+
+.update input{
+    width: 250px;
+    padding: 10px;
+    border: solid grey 1px;
+}
+
+.update button{
+    border: none;
+    padding: 10px;
+    background-color:lightsalmon;
+    cursor: pointer;
+    color: white;
 }
